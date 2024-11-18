@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="assigment2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="task2">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="40" />
+          <Property Name="Tdescription" Type="nvarchar" MaxLength="40" />
+          <Property Name="TStatus" Type="nvarchar" MaxLength="40" />
+          <Property Name="Duedate" Type="int" />
+          <Property Name="USId" Type="int" />
+        </EntityType>
+        <EntityType Name="userT2">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="nvarchar" MaxLength="40" />
+          <Property Name="UPassword" Type="nvarchar" MaxLength="40" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="urole" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK__task2__USId__3A81B327">
+          <End Role="userT2" Type="Self.userT2" Multiplicity="0..1" />
+          <End Role="task2" Type="Self.task2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userT2">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="task2">
+              <PropertyRef Name="USId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="assigment2ModelStoreContainer">
+          <EntitySet Name="task2" EntityType="Self.task2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userT2" EntityType="Self.userT2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__task2__USId__3A81B327" Association="Self.FK__task2__USId__3A81B327">
+            <End Role="userT2" EntitySet="userT2" />
+            <End Role="task2" EntitySet="task2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="assigment2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="task2">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Tdescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="TStatus" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Duedate" Type="Int32" />
+          <Property Name="USId" Type="Int32" />
+          <NavigationProperty Name="userT2" Relationship="Self.FK__task2__USId__3A81B327" FromRole="task2" ToRole="userT2" />
+        </EntityType>
+        <EntityType Name="userT2">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="UPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="urole" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="task2" Relationship="Self.FK__task2__USId__3A81B327" FromRole="userT2" ToRole="task2" />
+        </EntityType>
+        <Association Name="FK__task2__USId__3A81B327">
+          <End Role="userT2" Type="Self.userT2" Multiplicity="0..1" />
+          <End Role="task2" Type="Self.task2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userT2">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="task2">
+              <PropertyRef Name="USId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="assigment2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="task2" EntityType="Self.task2" />
+          <EntitySet Name="userT2" EntityType="Self.userT2" />
+          <AssociationSet Name="FK__task2__USId__3A81B327" Association="Self.FK__task2__USId__3A81B327">
+            <End Role="userT2" EntitySet="userT2" />
+            <End Role="task2" EntitySet="task2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="assigment2ModelStoreContainer" CdmEntityContainer="assigment2Entities">
+          <EntitySetMapping Name="task2">
+            <EntityTypeMapping TypeName="assigment2Model.task2">
+              <MappingFragment StoreEntitySet="task2">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Tdescription" ColumnName="Tdescription" />
+                <ScalarProperty Name="TStatus" ColumnName="TStatus" />
+                <ScalarProperty Name="Duedate" ColumnName="Duedate" />
+                <ScalarProperty Name="USId" ColumnName="USId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userT2">
+            <EntityTypeMapping TypeName="assigment2Model.userT2">
+              <MappingFragment StoreEntitySet="userT2">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="urole" ColumnName="urole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

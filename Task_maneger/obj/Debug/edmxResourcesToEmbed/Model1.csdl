@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="assigment2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="task2">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Tdescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="TStatus" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Duedate" Type="Int32" />
+    <Property Name="USId" Type="Int32" />
+    <NavigationProperty Name="userT2" Relationship="Self.FK__task2__USId__3A81B327" FromRole="task2" ToRole="userT2" />
+  </EntityType>
+  <EntityType Name="userT2">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="UPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="urole" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="task2" Relationship="Self.FK__task2__USId__3A81B327" FromRole="userT2" ToRole="task2" />
+  </EntityType>
+  <Association Name="FK__task2__USId__3A81B327">
+    <End Role="userT2" Type="Self.userT2" Multiplicity="0..1" />
+    <End Role="task2" Type="Self.task2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userT2">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="task2">
+        <PropertyRef Name="USId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="assigment2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="task2" EntityType="Self.task2" />
+    <EntitySet Name="userT2" EntityType="Self.userT2" />
+    <AssociationSet Name="FK__task2__USId__3A81B327" Association="Self.FK__task2__USId__3A81B327">
+      <End Role="userT2" EntitySet="userT2" />
+      <End Role="task2" EntitySet="task2" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

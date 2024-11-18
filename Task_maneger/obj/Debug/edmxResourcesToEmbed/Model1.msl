@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="assigment2ModelStoreContainer" CdmEntityContainer="assigment2Entities">
+    <EntitySetMapping Name="task2">
+      <EntityTypeMapping TypeName="assigment2Model.task2">
+        <MappingFragment StoreEntitySet="task2">
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Tdescription" ColumnName="Tdescription" />
+          <ScalarProperty Name="TStatus" ColumnName="TStatus" />
+          <ScalarProperty Name="Duedate" ColumnName="Duedate" />
+          <ScalarProperty Name="USId" ColumnName="USId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userT2">
+      <EntityTypeMapping TypeName="assigment2Model.userT2">
+        <MappingFragment StoreEntitySet="userT2">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="UPassword" ColumnName="UPassword" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="urole" ColumnName="urole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

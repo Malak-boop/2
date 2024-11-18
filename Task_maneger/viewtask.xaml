@@ -1,0 +1,38 @@
+﻿<Page x:Class="Task_maneger.viewtask"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Task_maneger"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="viewtask" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="113*"></RowDefinition>
+            <RowDefinition Height="113*"></RowDefinition>
+            <RowDefinition Height="71*"></RowDefinition>
+            <RowDefinition Height="154*" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="emp name" Grid.Column="1" Grid.Row="0" Margin="0,38,0,20" FontWeight="Bold" FontSize="20"/>
+        <Label Content="Pending" FontWeight="Bold" Grid.Row="0" FontSize="20" Grid.ColumnSpan="2" Margin="0,56,266,10"/>
+        <DataGrid Grid.ColumnSpan="3" Margin="10,112,10,0" Grid.RowSpan="2" Name="data"/>
+        <Label Content="Task" Grid.Row="1" FontWeight="Bold" FontSize="20" Margin="0,112,187,24" Grid.RowSpan="2" />
+        <TextBox TextWrapping="Wrap" Grid.Row="2" Margin="73,5,133,24"/>
+
+        <DataGrid Grid.ColumnSpan="3" Margin="10,10,22,10" Grid.Row="3" />
+        <Label Content="Status" Grid.Row="2" Grid.Column="1" Margin="0,10,172,10" FontWeight="Bold" FontSize="20"/>
+        <ComboBox Width="120" Grid.Column="1" Margin="127,10,19,24" Grid.Row="2"/>
+        <!--<ComboBoxItem>Panding</ComboBoxItem>
+        <ComboBoxItem>Compelted</ComboBoxItem>-->
+            <Button Content="save" Grid.Column="2" Margin="65,10,76,0" Grid.Row="2" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
+
+
+
+    </Grid>
+</Page>

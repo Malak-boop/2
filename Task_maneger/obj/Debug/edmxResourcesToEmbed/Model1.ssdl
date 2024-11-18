@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="assigment2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="task2">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="40" />
+    <Property Name="Tdescription" Type="nvarchar" MaxLength="40" />
+    <Property Name="TStatus" Type="nvarchar" MaxLength="40" />
+    <Property Name="Duedate" Type="int" />
+    <Property Name="USId" Type="int" />
+  </EntityType>
+  <EntityType Name="userT2">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UName" Type="nvarchar" MaxLength="40" />
+    <Property Name="UPassword" Type="nvarchar" MaxLength="40" />
+    <Property Name="email" Type="nvarchar" MaxLength="40" />
+    <Property Name="urole" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <Association Name="FK__task2__USId__3A81B327">
+    <End Role="userT2" Type="Self.userT2" Multiplicity="0..1" />
+    <End Role="task2" Type="Self.task2" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userT2">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="task2">
+        <PropertyRef Name="USId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="assigment2ModelStoreContainer">
+    <EntitySet Name="task2" EntityType="Self.task2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userT2" EntityType="Self.userT2" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__task2__USId__3A81B327" Association="Self.FK__task2__USId__3A81B327">
+      <End Role="userT2" EntitySet="userT2" />
+      <End Role="task2" EntitySet="task2" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
